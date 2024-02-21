@@ -48,8 +48,12 @@ int main ( void )
         
         GPIO_PA23_Set();
         GPIO_PA25_Set();
-        GPIO_PA24_Clear();
+        GPIO_PA24_Set();
+        DelayminuteT0();
         
+        GPIO_PA23_Clear();
+        GPIO_PA25_Clear();
+        GPIO_PA24_Clear();
         DelayminuteT0();
     }
 
