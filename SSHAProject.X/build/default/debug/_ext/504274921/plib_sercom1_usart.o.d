@@ -1,9 +1,8 @@
-build/default/debug/_ext/1171490990/interrupts.o: \
- ../src/config/default/interrupts.c \
- ../src/config/default/device_vectors.h \
- ../src/config/default/interrupts.h ../src/config/default/definitions.h \
- ../src/config/default/peripheral/sercom/spi_master/plib_sercom3_spi_master.h \
- ../src/config/default/peripheral/sercom/spi_master/plib_sercom_spi_master_common.h \
+build/default/debug/_ext/504274921/plib_sercom1_usart.o: \
+ ../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.c \
+ ../src/config/default/interrupts.h \
+ ../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.h \
+ ../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h \
  ../src/config/default/device.h \
  ../src/packs/PIC32CM1216MC00032_DFP/pic32cm1216mc00032.h \
  ../src/packs/CMSIS/CMSIS/Core/Include/core_cm0plus.h \
@@ -86,26 +85,13 @@ build/default/debug/_ext/1171490990/interrupts.o: \
  ../src/packs/PIC32CM1216MC00032_DFP/pio/pic32cm1216mc00032.h \
  ../src/config/default/device_cache.h ../src/config/default/device.h \
  ../src/config/default/toolchain_specifics.h \
- ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h \
- ../src/config/default/peripheral/nvmctrl/plib_nvmctrl.h \
- ../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.h \
- ../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h \
- ../src/config/default/peripheral/evsys/plib_evsys.h \
- ../src/config/default/peripheral/port/plib_port.h \
- ../src/config/default/peripheral/clock/plib_clock.h \
- ../src/config/default/peripheral/nvic/plib_nvic.h \
- ../src/config/default/peripheral/tc/plib_tc0.h \
- ../src/config/default/peripheral/tc/plib_tc_common.h
-
-../src/config/default/device_vectors.h:
+ ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h
 
 ../src/config/default/interrupts.h:
 
-../src/config/default/definitions.h:
+../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.h:
 
-../src/config/default/peripheral/sercom/spi_master/plib_sercom3_spi_master.h:
-
-../src/config/default/peripheral/sercom/spi_master/plib_sercom_spi_master_common.h:
+../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h:
 
 ../src/config/default/device.h:
 
@@ -274,21 +260,3 @@ build/default/debug/_ext/1171490990/interrupts.o: \
 ../src/config/default/toolchain_specifics.h:
 
 ../src/packs/CMSIS/CMSIS/Core/Include/cmsis_compiler.h:
-
-../src/config/default/peripheral/nvmctrl/plib_nvmctrl.h:
-
-../src/config/default/peripheral/sercom/usart/plib_sercom1_usart.h:
-
-../src/config/default/peripheral/sercom/usart/plib_sercom_usart_common.h:
-
-../src/config/default/peripheral/evsys/plib_evsys.h:
-
-../src/config/default/peripheral/port/plib_port.h:
-
-../src/config/default/peripheral/clock/plib_clock.h:
-
-../src/config/default/peripheral/nvic/plib_nvic.h:
-
-../src/config/default/peripheral/tc/plib_tc0.h:
-
-../src/config/default/peripheral/tc/plib_tc_common.h:
