@@ -130,9 +130,9 @@ Microchip PIC32 Memory-Usage Report By Module
           60           0           0          60          3c    _clzsi2.o                libgcc.a
           48           0           0          48          30    xc32_monitor.o           build/default/debug/_ext/163028504/xc32_monitor.o
           30           0           0          30          1e    pic32_data_init_copy.o   libpic32c.a
+          24           0           0          24          18    _lshrdi3.o               libgcc.a
           24           0           0          24          18    _ashldi3.o               libgcc.a
           24           0           0          24          18    _clzdi2.o                libgcc.a
-          24           0           0          24          18    _lshrdi3.o               libgcc.a
           20           0           0          20          14    memcpy.o                 libg-musl.a
           18           0           0          18          12    pic32_data_init_clear.o  libpic32c.a
           16           0           0          16          10    crtn.o                   c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/thumb/v6-m/nofp/crtn.o
@@ -240,6 +240,7 @@ LOAD build/default/debug/_ext/1865468468/plib_nvic.o
 LOAD build/default/debug/_ext/1593096446/plib_nvmctrl.o
 LOAD build/default/debug/_ext/1865521619/plib_port.o
 LOAD build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
+LOAD build/default/debug/_ext/504274921/plib_sercom1_usart.o
 LOAD build/default/debug/_ext/829342655/plib_tc0.o
 LOAD build/default/debug/_ext/163028504/xc32_monitor.o
 LOAD build/default/debug/_ext/1171490990/interrupts.o
@@ -248,7 +249,6 @@ LOAD build/default/debug/_ext/1171490990/libc_syscalls.o
 LOAD build/default/debug/_ext/1171490990/exceptions.o
 LOAD build/default/debug/_ext/1171490990/initialization.o
 LOAD build/default/debug/_ext/1360937237/main.o
-LOAD build/default/debug/_ext/504274921/plib_sercom1_usart.o
                 0x00000001                __MPLAB_BUILD = 0x1
                 0x00020000                __rom_end = (ORIGIN (rom) + LENGTH (rom))
                 0x20004000                __ram_end = (ORIGIN (ram) + LENGTH (ram))
@@ -383,23 +383,23 @@ LOAD stack
  .ARM.attributes
                 0x00000126       0x2c build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
  .ARM.attributes
-                0x00000152       0x2c build/default/debug/_ext/829342655/plib_tc0.o
+                0x00000152       0x2c build/default/debug/_ext/504274921/plib_sercom1_usart.o
  .ARM.attributes
-                0x0000017e       0x2c build/default/debug/_ext/163028504/xc32_monitor.o
+                0x0000017e       0x2c build/default/debug/_ext/829342655/plib_tc0.o
  .ARM.attributes
-                0x000001aa       0x2c build/default/debug/_ext/1171490990/interrupts.o
+                0x000001aa       0x2c build/default/debug/_ext/163028504/xc32_monitor.o
  .ARM.attributes
-                0x000001d6       0x2c build/default/debug/_ext/1171490990/startup_xc32.o
+                0x000001d6       0x2c build/default/debug/_ext/1171490990/interrupts.o
  .ARM.attributes
-                0x00000202       0x2c build/default/debug/_ext/1171490990/libc_syscalls.o
+                0x00000202       0x2c build/default/debug/_ext/1171490990/startup_xc32.o
  .ARM.attributes
-                0x0000022e       0x2c build/default/debug/_ext/1171490990/exceptions.o
+                0x0000022e       0x2c build/default/debug/_ext/1171490990/libc_syscalls.o
  .ARM.attributes
-                0x0000025a       0x2c build/default/debug/_ext/1171490990/initialization.o
+                0x0000025a       0x2c build/default/debug/_ext/1171490990/exceptions.o
  .ARM.attributes
-                0x00000286       0x2c build/default/debug/_ext/1360937237/main.o
+                0x00000286       0x2c build/default/debug/_ext/1171490990/initialization.o
  .ARM.attributes
-                0x000002b2       0x2c build/default/debug/_ext/504274921/plib_sercom1_usart.o
+                0x000002b2       0x2c build/default/debug/_ext/1360937237/main.o
  .ARM.attributes
                 0x000002de       0x2c c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .ARM.attributes
@@ -444,6 +444,7 @@ LOAD stack
  .comment       0x0000002b       0x2c build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/1865521619/plib_port.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
+ .comment       0x0000002b       0x2c build/default/debug/_ext/504274921/plib_sercom1_usart.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/829342655/plib_tc0.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/163028504/xc32_monitor.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/1171490990/interrupts.o
@@ -452,7 +453,6 @@ LOAD stack
  .comment       0x0000002b       0x2c build/default/debug/_ext/1171490990/exceptions.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/1171490990/initialization.o
  .comment       0x0000002b       0x2c build/default/debug/_ext/1360937237/main.o
- .comment       0x0000002b       0x2c build/default/debug/_ext/504274921/plib_sercom1_usart.o
  .comment       0x0000002b       0x2c c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .comment       0x0000002b       0x2c c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .comment       0x0000002b       0x2c c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(libc.o)
@@ -470,15 +470,15 @@ LOAD stack
  .debug_info    0x0000178f      0xad0 build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .debug_info    0x0000225f      0xbb1 build/default/debug/_ext/1865521619/plib_port.o
  .debug_info    0x00002e10     0x13a2 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
- .debug_info    0x000041b2      0xb32 build/default/debug/_ext/829342655/plib_tc0.o
- .debug_info    0x00004ce4      0x321 build/default/debug/_ext/163028504/xc32_monitor.o
- .debug_info    0x00005005      0x857 build/default/debug/_ext/1171490990/interrupts.o
- .debug_info    0x0000585c      0x449 build/default/debug/_ext/1171490990/startup_xc32.o
- .debug_info    0x00005ca5      0x308 build/default/debug/_ext/1171490990/libc_syscalls.o
- .debug_info    0x00005fad      0x341 build/default/debug/_ext/1171490990/exceptions.o
- .debug_info    0x000062ee      0x544 build/default/debug/_ext/1171490990/initialization.o
- .debug_info    0x00006832      0x575 build/default/debug/_ext/1360937237/main.o
- .debug_info    0x00006da7     0x17f3 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_info    0x000041b2     0x17f3 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_info    0x000059a5      0xb32 build/default/debug/_ext/829342655/plib_tc0.o
+ .debug_info    0x000064d7      0x321 build/default/debug/_ext/163028504/xc32_monitor.o
+ .debug_info    0x000067f8      0x857 build/default/debug/_ext/1171490990/interrupts.o
+ .debug_info    0x0000704f      0x449 build/default/debug/_ext/1171490990/startup_xc32.o
+ .debug_info    0x00007498      0x308 build/default/debug/_ext/1171490990/libc_syscalls.o
+ .debug_info    0x000077a0      0x341 build/default/debug/_ext/1171490990/exceptions.o
+ .debug_info    0x00007ae1      0x544 build/default/debug/_ext/1171490990/initialization.o
+ .debug_info    0x00008025      0x575 build/default/debug/_ext/1360937237/main.o
  .debug_info    0x0000859a      0x2b9 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_info    0x00008853      0x616 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .debug_info    0x00008e69      0x528 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(libc.o)
@@ -502,15 +502,15 @@ LOAD stack
  .debug_abbrev  0x00000303      0x1a1 build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .debug_abbrev  0x000004a4      0x178 build/default/debug/_ext/1865521619/plib_port.o
  .debug_abbrev  0x0000061c      0x259 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
- .debug_abbrev  0x00000875      0x15a build/default/debug/_ext/829342655/plib_tc0.o
- .debug_abbrev  0x000009cf       0x80 build/default/debug/_ext/163028504/xc32_monitor.o
- .debug_abbrev  0x00000a4f       0xb3 build/default/debug/_ext/1171490990/interrupts.o
- .debug_abbrev  0x00000b02       0xd4 build/default/debug/_ext/1171490990/startup_xc32.o
- .debug_abbrev  0x00000bd6       0x4d build/default/debug/_ext/1171490990/libc_syscalls.o
- .debug_abbrev  0x00000c23       0x3c build/default/debug/_ext/1171490990/exceptions.o
- .debug_abbrev  0x00000c5f       0xaf build/default/debug/_ext/1171490990/initialization.o
- .debug_abbrev  0x00000d0e       0xc4 build/default/debug/_ext/1360937237/main.o
- .debug_abbrev  0x00000dd2      0x2e8 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_abbrev  0x00000875      0x2e8 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_abbrev  0x00000b5d      0x15a build/default/debug/_ext/829342655/plib_tc0.o
+ .debug_abbrev  0x00000cb7       0x80 build/default/debug/_ext/163028504/xc32_monitor.o
+ .debug_abbrev  0x00000d37       0xb3 build/default/debug/_ext/1171490990/interrupts.o
+ .debug_abbrev  0x00000dea       0xd4 build/default/debug/_ext/1171490990/startup_xc32.o
+ .debug_abbrev  0x00000ebe       0x4d build/default/debug/_ext/1171490990/libc_syscalls.o
+ .debug_abbrev  0x00000f0b       0x3c build/default/debug/_ext/1171490990/exceptions.o
+ .debug_abbrev  0x00000f47       0xaf build/default/debug/_ext/1171490990/initialization.o
+ .debug_abbrev  0x00000ff6       0xc4 build/default/debug/_ext/1360937237/main.o
  .debug_abbrev  0x000010ba       0x44 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_abbrev  0x000010fe      0x117 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .debug_abbrev  0x00001215       0xb8 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(libc.o)
@@ -534,14 +534,14 @@ LOAD stack
  .debug_loc     0x00000220      0x3c0 build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .debug_loc     0x000005e0      0x25c build/default/debug/_ext/1865521619/plib_port.o
  .debug_loc     0x0000083c      0x1e0 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
- .debug_loc     0x00000a1c      0x1e8 build/default/debug/_ext/829342655/plib_tc0.o
- .debug_loc     0x00000c04       0x70 build/default/debug/_ext/163028504/xc32_monitor.o
- .debug_loc     0x00000c74       0x20 build/default/debug/_ext/1171490990/startup_xc32.o
- .debug_loc     0x00000c94       0x38 build/default/debug/_ext/1171490990/libc_syscalls.o
- .debug_loc     0x00000ccc       0x58 build/default/debug/_ext/1171490990/exceptions.o
- .debug_loc     0x00000d24       0x38 build/default/debug/_ext/1171490990/initialization.o
- .debug_loc     0x00000d5c       0x64 build/default/debug/_ext/1360937237/main.o
- .debug_loc     0x00000dc0      0x4de build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_loc     0x00000a1c      0x4de build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_loc     0x00000efa      0x1e8 build/default/debug/_ext/829342655/plib_tc0.o
+ .debug_loc     0x000010e2       0x70 build/default/debug/_ext/163028504/xc32_monitor.o
+ .debug_loc     0x00001152       0x20 build/default/debug/_ext/1171490990/startup_xc32.o
+ .debug_loc     0x00001172       0x38 build/default/debug/_ext/1171490990/libc_syscalls.o
+ .debug_loc     0x000011aa       0x58 build/default/debug/_ext/1171490990/exceptions.o
+ .debug_loc     0x00001202       0x38 build/default/debug/_ext/1171490990/initialization.o
+ .debug_loc     0x0000123a       0x64 build/default/debug/_ext/1360937237/main.o
  .debug_loc     0x0000129e       0x14 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_loc     0x000012b2       0x5e c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .debug_loc     0x00001310      0x12d c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(memcpy.o)
@@ -562,23 +562,23 @@ LOAD stack
  .debug_aranges
                 0x000000a0       0x20 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
  .debug_aranges
-                0x000000c0       0x20 build/default/debug/_ext/829342655/plib_tc0.o
+                0x000000c0       0x20 build/default/debug/_ext/504274921/plib_sercom1_usart.o
  .debug_aranges
-                0x000000e0       0x20 build/default/debug/_ext/163028504/xc32_monitor.o
+                0x000000e0       0x20 build/default/debug/_ext/829342655/plib_tc0.o
  .debug_aranges
-                0x00000100       0x20 build/default/debug/_ext/1171490990/interrupts.o
+                0x00000100       0x20 build/default/debug/_ext/163028504/xc32_monitor.o
  .debug_aranges
-                0x00000120       0x28 build/default/debug/_ext/1171490990/startup_xc32.o
+                0x00000120       0x20 build/default/debug/_ext/1171490990/interrupts.o
  .debug_aranges
-                0x00000148       0x20 build/default/debug/_ext/1171490990/libc_syscalls.o
+                0x00000140       0x28 build/default/debug/_ext/1171490990/startup_xc32.o
  .debug_aranges
-                0x00000168       0x20 build/default/debug/_ext/1171490990/exceptions.o
+                0x00000168       0x20 build/default/debug/_ext/1171490990/libc_syscalls.o
  .debug_aranges
-                0x00000188       0x20 build/default/debug/_ext/1171490990/initialization.o
+                0x00000188       0x20 build/default/debug/_ext/1171490990/exceptions.o
  .debug_aranges
-                0x000001a8       0x20 build/default/debug/_ext/1360937237/main.o
+                0x000001a8       0x20 build/default/debug/_ext/1171490990/initialization.o
  .debug_aranges
-                0x000001c8       0x20 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+                0x000001c8       0x20 build/default/debug/_ext/1360937237/main.o
  .debug_aranges
                 0x000001e8       0x28 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_aranges
@@ -617,15 +617,15 @@ LOAD stack
  .debug_line    0x0000045e      0x2bb build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .debug_line    0x00000719      0x223 build/default/debug/_ext/1865521619/plib_port.o
  .debug_line    0x0000093c      0x476 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
- .debug_line    0x00000db2      0x1fe build/default/debug/_ext/829342655/plib_tc0.o
- .debug_line    0x00000fb0       0xb6 build/default/debug/_ext/163028504/xc32_monitor.o
- .debug_line    0x00001066       0xb6 build/default/debug/_ext/1171490990/interrupts.o
- .debug_line    0x0000111c      0x104 build/default/debug/_ext/1171490990/startup_xc32.o
- .debug_line    0x00001220       0x5d build/default/debug/_ext/1171490990/libc_syscalls.o
- .debug_line    0x0000127d       0x63 build/default/debug/_ext/1171490990/exceptions.o
- .debug_line    0x000012e0       0xf6 build/default/debug/_ext/1171490990/initialization.o
- .debug_line    0x000013d6       0xfa build/default/debug/_ext/1360937237/main.o
- .debug_line    0x000014d0      0x627 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_line    0x00000db2      0x627 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_line    0x000013d9      0x1fe build/default/debug/_ext/829342655/plib_tc0.o
+ .debug_line    0x000015d7       0xb6 build/default/debug/_ext/163028504/xc32_monitor.o
+ .debug_line    0x0000168d       0xb6 build/default/debug/_ext/1171490990/interrupts.o
+ .debug_line    0x00001743      0x104 build/default/debug/_ext/1171490990/startup_xc32.o
+ .debug_line    0x00001847       0x5d build/default/debug/_ext/1171490990/libc_syscalls.o
+ .debug_line    0x000018a4       0x63 build/default/debug/_ext/1171490990/exceptions.o
+ .debug_line    0x00001907       0xf6 build/default/debug/_ext/1171490990/initialization.o
+ .debug_line    0x000019fd       0xfa build/default/debug/_ext/1360937237/main.o
  .debug_line    0x00001af7       0xe8 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_line    0x00001bdf      0x1c2 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .debug_line    0x00001da1       0xb8 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(libc.o)
@@ -649,15 +649,15 @@ LOAD stack
  .debug_str     0x00000028       0x16 build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .debug_str     0x0000003e        0xb build/default/debug/_ext/1865521619/plib_port.o
  .debug_str     0x00000049      0x142 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
- .debug_str     0x0000018b       0xb2 build/default/debug/_ext/829342655/plib_tc0.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/163028504/xc32_monitor.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/1171490990/interrupts.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/1171490990/startup_xc32.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/1171490990/libc_syscalls.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/1171490990/exceptions.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/1171490990/initialization.o
- .debug_str     0x0000023d        0x0 build/default/debug/_ext/1360937237/main.o
- .debug_str     0x0000023d      0x142 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_str     0x0000018b      0x142 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_str     0x000002cd       0xb2 build/default/debug/_ext/829342655/plib_tc0.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/163028504/xc32_monitor.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/1171490990/interrupts.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/1171490990/startup_xc32.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/1171490990/libc_syscalls.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/1171490990/exceptions.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/1171490990/initialization.o
+ .debug_str     0x0000037f        0x0 build/default/debug/_ext/1360937237/main.o
  .debug_str     0x0000037f        0x0 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_str     0x0000037f        0x0 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .debug_str     0x0000037f        0x0 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(libc.o)
@@ -681,15 +681,15 @@ LOAD stack
  .debug_frame   0x00000178      0x240 build/default/debug/_ext/1593096446/plib_nvmctrl.o
  .debug_frame   0x000003b8      0x16c build/default/debug/_ext/1865521619/plib_port.o
  .debug_frame   0x00000524      0x128 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
- .debug_frame   0x0000064c      0x138 build/default/debug/_ext/829342655/plib_tc0.o
- .debug_frame   0x00000784       0x50 build/default/debug/_ext/163028504/xc32_monitor.o
- .debug_frame   0x000007d4       0x20 build/default/debug/_ext/1171490990/interrupts.o
- .debug_frame   0x000007f4       0x38 build/default/debug/_ext/1171490990/startup_xc32.o
- .debug_frame   0x0000082c       0x30 build/default/debug/_ext/1171490990/libc_syscalls.o
- .debug_frame   0x0000085c       0x48 build/default/debug/_ext/1171490990/exceptions.o
- .debug_frame   0x000008a4       0x30 build/default/debug/_ext/1171490990/initialization.o
- .debug_frame   0x000008d4       0x4c build/default/debug/_ext/1360937237/main.o
- .debug_frame   0x00000920      0x300 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_frame   0x0000064c      0x300 build/default/debug/_ext/504274921/plib_sercom1_usart.o
+ .debug_frame   0x0000094c      0x138 build/default/debug/_ext/829342655/plib_tc0.o
+ .debug_frame   0x00000a84       0x50 build/default/debug/_ext/163028504/xc32_monitor.o
+ .debug_frame   0x00000ad4       0x20 build/default/debug/_ext/1171490990/interrupts.o
+ .debug_frame   0x00000af4       0x38 build/default/debug/_ext/1171490990/startup_xc32.o
+ .debug_frame   0x00000b2c       0x30 build/default/debug/_ext/1171490990/libc_syscalls.o
+ .debug_frame   0x00000b5c       0x48 build/default/debug/_ext/1171490990/exceptions.o
+ .debug_frame   0x00000ba4       0x30 build/default/debug/_ext/1171490990/initialization.o
+ .debug_frame   0x00000bd4       0x4c build/default/debug/_ext/1360937237/main.o
  .debug_frame   0x00000c20       0x38 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
  .debug_frame   0x00000c58       0x38 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(__libc_start_main.o)
  .debug_frame   0x00000c90       0x28 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libg-musl.a(memcpy.o)
@@ -892,31 +892,31 @@ LOAD stack
  .data          0x00000000        0x0 c:/program files/microchip/xc32/v4.35/bin/bin/../../lib/gcc/pic32c/8.3.1/../../../../pic32c/lib/thumb/v6-m/nofp\libpic32c.a(data_init.o)
 
 .data%z46       0x00000000        0x0
- .data          0x00000000        0x0 build/default/debug/_ext/504274921/plib_sercom1_usart.o
-
-.data%z47       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/1360937237/main.o
 
-.data%z48       0x00000000        0x0
+.data%z47       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/1171490990/initialization.o
 
-.data%z49       0x00000000        0x0
+.data%z48       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/1171490990/exceptions.o
 
-.data%z50       0x00000000        0x0
+.data%z49       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/1171490990/libc_syscalls.o
 
-.data%z51       0x00000000        0x0
+.data%z50       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/1171490990/startup_xc32.o
 
-.data%z52       0x00000000        0x0
+.data%z51       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/1171490990/interrupts.o
 
-.data%z53       0x00000000        0x0
+.data%z52       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/163028504/xc32_monitor.o
 
-.data%z54       0x00000000        0x0
+.data%z53       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/829342655/plib_tc0.o
+
+.data%z54       0x00000000        0x0
+ .data          0x00000000        0x0 build/default/debug/_ext/504274921/plib_sercom1_usart.o
 
 .data%z55       0x00000000        0x0
  .data          0x00000000        0x0 build/default/debug/_ext/17022449/plib_sercom3_spi_master.o
