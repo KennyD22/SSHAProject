@@ -70,9 +70,9 @@
 signed long int t_fine; // global variable 
 
 float temperature, humidity, pressure; //variables for each data. 
-float temperatures[4];//array for room temps used in damper adjustment
-float humidities[4];//array for room humidities
-float pressures[4];//array for room pressures
+char temperatures[8];//array for room temps used in damper adjustment
+char humidities[8];//array for room humidities
+char pressures[8];//array for room pressures
 float tempavgs[240];//temperatures for a whole hour to avg together and store
 float humidavgs[240];//humidities for a whole hour to avg together and store
 float pressureavgs[240];//pressures for a whole hour to avg together and store
@@ -85,6 +85,11 @@ void readHumidity();
 
 // gets pressure for each sensor from arduino
 void readPressure(); 
+
+void convertfromascii();
+
+//averages temperature for storing
+void avgSensors();
 // *****************************************************************************
 // *****************************************************************************
 // Section: Main Entry Point
@@ -111,22 +116,38 @@ int main ( void )
 //read temperature of sensors
 void readTemp(void){
     //send command to get temperatures
-    SERCOM_USART_Write("0",1);
-    while(SERCOM_USART_IsBusy()){
+    SERCOM1_USART_Write("0",1);
+    while(SERCOM1_USART_WriteIsBusy()){
     }
-    SERCOM_USART_Read(temperatures,4);
+    SERCOM1_USART_Read(temperatures,8);
     
     return ;
 }
 
 //read humidity of sensors
 void readHumidity(void){
+    SERCOM1_USART_Write("1",1);
+    while(SERCOM1_USART_WriteIsBusy()){
+    }
+    SERCOM1_USART_Read(humidities,8);
     return;
 }
 
 
 //read pressure of sensors
 void readPressure(){
+    SERCOM1_USART_Write("2",1);
+    while(SERCOM1_USART_WriteIsBusy()){
+    }
+    SERCOM1_USART_Read(pressures,8);
+    return;
+}
+
+//convert from ascii to integers
+void convertfromascii(){
+    temperature = atoi(temperatures);
+    humidity = atoi(humidities);
+    pressure = atoi(pressures);
     return;
 }
 
@@ -186,19 +207,19 @@ void onTimeT0(){
 //open or close damper based on most recent temperature in the room
 void adjustDampers(){
     //check room 1
-    if((temperatures[0] || temperatures[1]) > x){
+    if((temperatures[0] || temperatures[1]) > 85){
         
     }else{
         
     }
     //check room 2
-    if(temperatures[2] > x){
+    if(temperatures[2] > 85){
         
     }else{
         
     }
     //check room 3
-    if(temperatures[3] > x){
+    if(temperatures[3] > 85){
         
     }else{
         
