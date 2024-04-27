@@ -73,9 +73,9 @@ signed long int t_fine; // global variable
 float temperature, humidity, pressure; //variables for each data. 
 char temperatures[8];//array for room temps read in
 int temps[4]; //holds most recent temperatures
-char humidities[16];//array for room humidities read in
+char humidities[8];//array for room humidities read in
 int humids[4]; //holds most recent humidities read
-char pressures[20];//array for room pressures read in
+char pressures[12];//array for room pressures read in
 int pressured[4]; //holds most recent pressures read
 int tempavgs[240];//temperatures for a whole hour to avg together and store
 int humidavgs[240];//humidities for a whole hour to avg together and store
@@ -138,20 +138,20 @@ int main ( void )
     
     
     while ( true ){
-        for(int i = 0; i < 4; i++){
-        temperatures[i] = 0;
-        }
-        for(int i = 0; i < 16; i++){
-            humidities[i] = 0;
-        }
-        for(int i = 0; i < 20; i++){
-            pressures[i] = 0;
-        }
-        readTemp();
-        //readHumidity();
-        //readPressure();
-        asciiToInt();
-        DelaySec(5);
+//        for(int i = 0; i < 4; i++){
+//        temperatures[i] = 0;
+//        }
+//        for(int i = 0; i < 4; i++){
+//            humidities[i] = 0;
+//        }
+//        for(int i = 0; i < 6; i++){
+//            pressures[i] = 0;
+//        }
+//        readTemp();
+//        //readHumidity();
+//        //readPressure();
+//        asciiToInt();
+//        DelaySec(5);
         
         //for pssc testing
         int seconds = 0;
@@ -161,6 +161,15 @@ int main ( void )
                 TC0_TimerStart();
                 while(!TC0_TimerPeriodHasExpired());
                 seconds++;
+            }
+            for(int i = 0; i < 4; i++){
+            temperatures[i] = 0;
+            }
+            for(int i = 0; i < 4; i++){
+                humidities[i] = 0;
+            }
+            for(int i = 0; i < 6; i++){
+                pressures[i] = 0;
             }
             minutes++;
             seconds = 0;
