@@ -131,27 +131,12 @@ int main ( void )
     /* Initialize all modules */
     SYS_Initialize ( NULL );
     
-    struct Queue* tempavgdata = createQueue(2975);
-    struct Queue* humidityavgdata = createQueue(2975);
-    struct Queue* pressureavgdata = createQueue(2975);
+    struct Queue* tempavgdata = createQueue(2000);
+    struct Queue* humidityavgdata = createQueue(2000);
     
     
     
-    while ( true ){
-//        for(int i = 0; i < 4; i++){
-//        temperatures[i] = 0;
-//        }
-//        for(int i = 0; i < 4; i++){
-//            humidities[i] = 0;
-//        }
-//        for(int i = 0; i < 6; i++){
-//            pressures[i] = 0;
-//        }
-//        readTemp();
-//        //readHumidity();
-//        //readPressure();
-//        asciiToInt();
-//        DelaySec(5);
+    while ( true ){ 
         
         //for pssc testing
         int seconds = 0;
@@ -304,7 +289,6 @@ void DelaySec(uint8_t time){
     while(seconds < time){
         TC0_TimerStart();
         while(!TC0_TimerPeriodHasExpired());
-        WDT_Clear();
         seconds++;
     }
     return;
@@ -318,9 +302,7 @@ void DelayminuteT0(){
     while(seconds <60){
         TC0_TimerStart();
         while(!TC0_TimerPeriodHasExpired()){
-            WDT_Clear();
         };
-        WDT_Clear();
         seconds++;
     }
     return;
