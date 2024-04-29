@@ -79,7 +79,6 @@ char pressures[12];//array for room pressures read in
 int pressured[4]; //holds most recent pressures read
 int tempavgs[240];//temperatures for a whole hour to avg together and store
 int humidavgs[240];//humidities for a whole hour to avg together and store
-int pressureavgs[240];//pressures for a whole hour to avg together and store
 
 // get temperature for each sensor from Arduino
 void readTemp(); 
@@ -134,6 +133,9 @@ int main ( void )
     struct Queue* tempavgdata = createQueue(2000);
     struct Queue* humidityavgdata = createQueue(2000);
     
+    int itemps = 0;
+    int ihumids = 0;
+    
     
     
     while ( true ){ 
@@ -147,19 +149,27 @@ int main ( void )
                 while(!TC0_TimerPeriodHasExpired());
                 seconds++;
             }
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 8; i++){
             temperatures[i] = 0;
             }
-            for(int i = 0; i < 4; i++){
+            for(int i = 0; i < 8; i++){
                 humidities[i] = 0;
             }
-            for(int i = 0; i < 6; i++){
+            for(int i = 0; i < 12; i++){
                 pressures[i] = 0;
             }
             minutes++;
             seconds = 0;
             readTemp();
             asciiToInt();
+            tempavgs[itemps] = temps[0];
+            itemps += 1;
+            tempavgs[itemps] = temps[1];
+            itemps += 1;
+            tempavgs[itemps] = temps[2];
+            itemps += 1;
+            tempavgs[itemps] = temps[3];
+            itemps += 1;
             adjustDampersPSSC();
         }
         
@@ -367,19 +377,6 @@ int avgHumid(){
     //empty temp array to make ready for new temperatures
     for(int i = 0; i < 240; i++){
         humidavgs[i] = 0;
-    }
-    return avg;
-}
-int avgPress(){
-    float avg;
-    for(int i = 0; i < 240; i++){
-        avg += pressureavgs[i];
-    }
-    avg = avg/240;
-    
-    //empty temp array to make ready for new temperatures
-    for(int i = 0; i < 240; i++){
-        pressureavgs[i] = 0;
     }
     return avg;
 }
