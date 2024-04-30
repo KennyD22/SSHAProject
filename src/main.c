@@ -98,6 +98,9 @@ int avgHumid();
 //convert read in chars to integers
 void asciiToInt();
 
+//opens or closes dampers based on recent temperature readings
+void adjustDampers();
+
 //create a queue
 struct Queue* createQueue(int capacity);
 
@@ -143,7 +146,7 @@ int main ( void )
         //for pssc testing
         int seconds = 0;
         int minutes = 0;
-        while(minutes < 5){
+        while(minutes < 60){
             while(seconds <60){
                 TC0_TimerStart();
                 while(!TC0_TimerPeriodHasExpired());
@@ -161,6 +164,7 @@ int main ( void )
             minutes++;
             seconds = 0;
             readTemp();
+            readHumidity();
             asciiToInt();
             tempavgs[itemps] = temps[0];
             itemps += 1;
@@ -170,45 +174,38 @@ int main ( void )
             itemps += 1;
             tempavgs[itemps] = temps[3];
             itemps += 1;
-            adjustDampersPSSC();
+            
+            humidavgs[ihumids] = humids[0];
+            ihumids += 1;
+            humidavgs[ihumids] = humids[1];
+            ihumids += 1;
+            humidavgs[ihumids] = humids[2];
+            ihumids += 1;
+            humidavgs[ihumids] = humids[3];
+            ihumids += 1;
+            if(minutes%5 == 0){
+                adjustDampers();
+            }
         }
         
         int avg = 0;
         avg = avgTemp();
+        //store temperature data
         if(isFull(tempavgdata)){
             dequeue(tempavgdata);
             enqueue(tempavgdata, avg);
         }else{
             enqueue(tempavgdata, avg);
         }
+        avg = avgHumid();
+        //store humidity data
+        if(isFull(humidityavgdata)){
+            dequeue(humidityavgdata);
+            enqueue(humidityavgdata, avg);
+        }else{
+            enqueue(humidityavgdata, avg);
+        }
         minutes = 0;
-        
-//        while(minutes < 60){
-//            while(seconds < 60){
-//                TC0_TimerStart();
-//                while(!TC0_TimerPeriodHasExpired());
-//                seconds++;
-//            }
-//            minutes++;
-//            seconds = 0;
-//            readTemp();
-//            if(minutes%5 == 0){
-//                adjustDampers();
-//            }
-//        }
-//        int avg = 0;
-//        avg = avgTemp();
-//        if(isFull(tempavgdata)){
-//            dequeue(tempavgdata);
-//            enqueue(tempavgdata, avg);
-//        }else{
-//            enqueue(tempavgdata, avg);
-//        }
-//        avg = avgHumid();
-//        enqueue(humidityavgdata, avg);
-//        avg = avgPress();
-//        enqueue(pressureavgdata, avg);
-//        minutes = 0;
     }
 
     /* Execution should not come here during normal operation */
@@ -216,7 +213,7 @@ int main ( void )
     return ( EXIT_FAILURE );
 }
 
-//read temperature of sensors
+//read temperature of sensors "0"
 void readTemp(void){
     //send command to get temperatures
     for(int i = 0; i < 4; i++){
@@ -227,36 +224,14 @@ void readTemp(void){
     }
     SERCOM1_USART_ReceiverEnable();
     SERCOM1_USART_Read(&temperatures,8);
-    DelaySec(2);
     
     return ;
 }
 
 void asciiToInt(){
     int temp;
-//    temp = (int)(temperatures[0])+0;
-//    temp = temp - 0x30;
-//    temp = temp*10;
-//    temp += ((int)(temperatures[1])+0) - 0x30;
-//    temps[0] = temp;
-//    
-//    temp = (int)(temperatures[2])+0;
-//    temp = temp - 0x30;
-//    temp = temp*10;
-//    temp += ((int)(temperatures[3])+0) - 0x30;
-//    temps[1] = temp;
-//    
-//    temp = (int)(temperatures[4])+0;
-//    temp = temp - 0x30;
-//    temp = temp*10;
-//    temp += ((int)(temperatures[5])+0) - 0x30;
-//    temps[2] = temp;
-//    
-//    temp = (int)(temperatures[6])+0;
-//    temp = temp - 0x30;
-//    temp = temp*10;
-//    temp += ((int)(temperatures[7])+0) - 0x30;
-//    temps[3] = temp;
+    int humid;
+    int press;
     
     for(int i = 0; i < 8; i = i+2){
     temp = (int)(temperatures[i])+0;
@@ -269,27 +244,55 @@ void asciiToInt(){
     if(i == 6)temps[3] = temp;
     }
     
-}
-
-//read humidity of sensors
-void readHumidity(void){
-    int humid;
     for(int i = 0; i < 8; i = i+2){
-    humid = (int)(temperatures[i])+0;
+    humid = (int)(humidities[i])+0;
     humid = humid - 0x30;
     humid = humid*10;
-    humid += ((int)(temperatures[i+1])+0) - 0x30;
-    if(i == 0)temps[0] = humid;
-    if(i == 2)temps[1] = humid;
-    if(i == 4)temps[2] = humid;
-    if(i == 6)temps[3] = humid;
+    humid += ((int)(humidities[i+1])+0) - 0x30;
+    if(i == 0)humids[0] = humid;
+    if(i == 2)humids[1] = humid;
+    if(i == 4)humids[2] = humid;
+    if(i == 6)humids[3] = humid;
+    }
+    
+    for(int i = 0; i < 12; i = i+3){
+    press = (int)(pressures[i])+0;
+    press = press - 0x30;
+    press = press*100;
+    press += (((int)(pressures[i+1])+0) - 0x30)*10;
+    press += (((int)(pressures[i+2])+0) - 0x30);
+    if(i == 0)pressured[0] = press;
+    if(i == 3)pressured[1] = press;
+    if(i == 6)pressured[2] = press;
+    if(i == 9)pressured[3] = press;
     }
     return;
 }
 
+//read humidity of sensors "1"
+void readHumidity(void){
+    for(int i = 0; i < 4; i++){
+        humidities[i] = 0;
+    }
+    SERCOM1_USART_Write("1",1);
+    while(SERCOM1_USART_WriteIsBusy()){
+    }
+    SERCOM1_USART_ReceiverEnable();
+    SERCOM1_USART_Read(&humidities,8);
+    return;
+}
 
-//read pressure of sensors
+
+//read pressure of sensors "2"
 void readPressure(){
+    for(int i = 0; i < 4; i++){
+        humidities[i] = 0;
+    }
+    SERCOM1_USART_Write("2",1);
+    while(SERCOM1_USART_WriteIsBusy()){
+    }
+    SERCOM1_USART_ReceiverEnable();
+    SERCOM1_USART_Read(&humidities,8);
     return;
 }
 
@@ -304,56 +307,32 @@ void DelaySec(uint8_t time){
     return;
 }
 
-
-
-//1 minute delays used for sensors to gather readings every minute
-void DelayminuteT0(){
-    int seconds = 0;
-    while(seconds <60){
-        TC0_TimerStart();
-        while(!TC0_TimerPeriodHasExpired()){
-        };
-        seconds++;
-    }
-    return;
-}
-
-
-//open or close damper based on most recent temperature in the room
-void adjustDampersPSSC(){
-    //check room 1
-    if(((temps[0] - temps[1]) > 15)||((temps[1] - temps[0]) > 15)){
+//open or close damper based on most recent temperature in each room
+//temps0 and 1 are main living space
+//temp 2 is utility room, temp 3 is basement
+void adjustDampers(){
+    //check living room is between 76 and 65
+    if(((temps[0] || temps[1]) > 75) || ((temps[0] || temps[1]) < 66)){
         Damper1_Set();
     }else{
         Damper1_Clear();
     }
-    return;
-}
-
-//open or close damper based on most recent temperature in the room
-void adjustDampers(){
-    //check room 1
-    if((temps[0] || temps[1]) > 70){
-        
+    //check utility room is between 85 and 55
+    if((temps[2] > 84) ||(temps[2] < 56)){
+        Damper2_Set();
     }else{
-        
+        Damper2_Clear();
     }
-    //check room 2
-    if(temps[2] > 70){
-        
+    //check basement is between 90 and 40
+    if((temps[3] > 89) || (temps[3] < 41)){
+        Damper3_Set();
     }else{
-        
-    }
-    //check room 3
-    if(temps[3] > 70){
-        
-    }else{
-        
+        Damper3_Clear();
     }
     return;
 }
 
-//averages sensor readings for storage
+//averages temperature readings for storage 
 int avgTemp(){
     float avg;
     for(int i = 0; i < 240; i++){
@@ -367,6 +346,8 @@ int avgTemp(){
     }
     return avg;
 }
+
+//averages humidity readings for storage 
 int avgHumid(){
     float avg;
     for(int i = 0; i < 240; i++){
@@ -374,7 +355,7 @@ int avgHumid(){
     }
     avg = avg/240;
     
-    //empty temp array to make ready for new temperatures
+    //empty humidity array to make ready for new humidities
     for(int i = 0; i < 240; i++){
         humidavgs[i] = 0;
     }
@@ -388,7 +369,7 @@ struct Queue{
     int* array;
 };
 
-//creates queue
+//creates queue, modified version from geeksforgeeks.org
 struct Queue* createQueue(int capacity){
     struct Queue* queue = (struct Queue*)malloc(
             sizeof(struct Queue));
